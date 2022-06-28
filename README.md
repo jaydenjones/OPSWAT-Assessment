@@ -82,7 +82,7 @@ If not using the "Get Started" menu:
 Alternatively, one can clone and download the program from Github directly:
 
 1. Select "Clone a repo" in the "Get started" menu.
-2. Enter the repository location URL (INSERT HERE).
+2. Enter the repository location [URL](https://github.com/jaydenjones/OPSWAT-Assessment).
 3. Select desired file path and click Clone.
 4. Double-click "Folder View" in Solution Explorer on the right-hand side of screen.
 5. Select desired program to run/edit.
