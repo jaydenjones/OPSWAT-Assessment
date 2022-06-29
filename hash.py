@@ -78,7 +78,6 @@ def check_in_queue(file_upload_response: dict): # Check if file is in queue (not
         if end_time - start_time > 120: # If file is still in queue after a couple minutes, exit program
             print("File is still in queue. You may want to wait a few minutes before trying again.")
             sys.exit()
-        # FIXME IF FILE TAKES LONGER A COUPLE MINUTES JUST CLOSE AND SAY TRY AGAIN?
 
 
 
@@ -108,10 +107,10 @@ if __name__ == "__main__":
             check_in_queue(hash_lookup_response) # Check if file has been scanned yet
             print_results(FILE_NAME, hash_lookup_response) # Print results of scan
 
-        if 'error' in hash_lookup_response: # might not even need to check this if we get to this point but maybe to be safe; FIXME If 'error' is returned, than no file hash was matched
+        if 'error' in hash_lookup_response: # If 'error' is returned, than no file hash was matched
 
             print("Uploading file to API. This may take a minute...")
-            file_upload_response = requests.post(FILE_URL, files=FILE, headers=HEADERS) # this works for now, but this doesn't need all of the API info for some reason so come back and fix with requests.request ideally
+            file_upload_response = requests.post(FILE_URL, files=FILE, headers=HEADERS) # Upload file to API
             file_upload_response = json.loads(file_upload_response.text) # File upload response containing data_id
             check_in_queue(file_upload_response) # Check if file is still in queue
             print_results(FILE_NAME, file_upload_response) # File is not in queue anymore, print results
